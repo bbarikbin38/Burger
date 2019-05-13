@@ -1,0 +1,39 @@
+<h1>Order a Burger</h1>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="burger">Burger Name:</label>
+    <input type="text" id="burger" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="devoured"></label><br>
+    <input type="radio" name="devoured" value="1" checked> Dine-in?<br>
+    <input type="radio" name="devoured" value="0"> Take Out?
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
+
+<h3>Burger Orders:</h3>
+
+<h4>Take out:</h4>
+
+<ul>
+  {{#each burgers}}
+  {{#unless devoured}}
+  {{> burgers/burger-block devoured=true}}
+  {{/unless}}
+  {{/each}}
+</ul>
+
+<h4>Dine-in:</h4>
+
+<ul>
+  {{#each burgers}}
+  {{#if devoured}}
+  {{> burgers/burger-block devoured=false}}
+  {{/if}}
+  {{/each}}
+</ul>
+
